@@ -10,13 +10,13 @@ module.exports = {
 		themes: [
 			{
 				manufacturetheme: {
-					primary: "#3762cc",
-					secondary: "#a4c9fe",
-					accent: "#f9a8a7",
-					neutral: "#6bdddd",
+					primary: "#4A5FC1",
+					secondary: "#00ABE1",
+					accent: "#f9aca6",
+					neutral: "#F4DB7D",
 					"base-100": "#ffffff",
 				},
-			}
+			},
 		],
 	},
 }

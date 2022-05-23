@@ -4,13 +4,13 @@ import React from 'react';
 import logo from '../../../assets/logo.png';
 
 const Footer = () => {
-    const socialMedia = 'btn btn-primary bg-primary flex h-auto min-h-fit items-center p-2 rounded-full text-secondary';
+    const socialMedia = 'btn btn-primary flex h-auto min-h-fit items-center p-2 rounded-full text-base-100 hover:text-secondary';
     const footerTitle = 'footer-title my-2 opacity-100 text-lg text-primary';
     const spanStyle = 'font-semibold link link-hover';
 
     return (
-        <footer className='bg-neutral px-20 py-10'>
-            <div className="footer grid grid-cols-7 text-neutral-content">
+        <footer className='bg-base-300 px-20 py-10'>
+            <div className="footer grid grid-cols-7">
                 <div className='col-span-2'>
                     <div><img className='w-1/6' src={logo} alt="logo" /></div>
                     <h3 className='font-bold text-xl text-primary'>Manufacture Online Ltd.</h3>
