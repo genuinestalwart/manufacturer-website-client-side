@@ -4,7 +4,7 @@ import React from 'react';
 import logo from '../../../assets/logo.png';
 
 const Footer = () => {
-    const socialMedia = 'btn btn-primary flex h-auto min-h-fit items-center p-2 rounded-full text-base-100 hover:text-secondary';
+    const socialMedia = 'btn btn-primary flex h-auto min-h-fit items-center p-2 rounded-full text-accent hover:text-secondary';
     const footerTitle = 'footer-title my-2 opacity-100 text-lg text-primary';
     const spanStyle = 'font-semibold link link-hover';
 
@@ -18,26 +18,26 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    <h4 class={footerTitle}>Services</h4>
-                    <span class={spanStyle}>Purchase</span>
-                    <span class={spanStyle}>Delivery</span>
-                    <span class={spanStyle}>Offers</span>
-                    <span class={spanStyle}>Blogs</span>
+                    <h4 className={footerTitle}>Services</h4>
+                    <span className={spanStyle}>Purchase</span>
+                    <span className={spanStyle}>Delivery</span>
+                    <span className={spanStyle}>Offers</span>
+                    <span className={spanStyle}>Blogs</span>
                 </div>
 
                 <div>
-                    <h4 class={footerTitle}>Company</h4>
-                    <span class={spanStyle}>About us</span>
-                    <span class={spanStyle}>Contact us</span>
-                    <span class={spanStyle}>Why us</span>
+                    <h4 className={footerTitle}>Company</h4>
+                    <span className={spanStyle}>About us</span>
+                    <span className={spanStyle}>Contact us</span>
+                    <span className={spanStyle}>Why us</span>
                 </div>
 
                 <div>
-                    <h4 class={footerTitle}>Legal</h4>
-                    <span class={spanStyle}>Terms of use</span>
-                    <span class={spanStyle}>Privacy policy</span>
-                    <span class={spanStyle}>Cookie policy</span>
-                    <span class={spanStyle}>Legal policy</span>
+                    <h4 className={footerTitle}>Legal</h4>
+                    <span className={spanStyle}>Terms of use</span>
+                    <span className={spanStyle}>Privacy policy</span>
+                    <span className={spanStyle}>Cookie policy</span>
+                    <span className={spanStyle}>Legal policy</span>
                 </div>
 
                 <div className='col-span-2'>
