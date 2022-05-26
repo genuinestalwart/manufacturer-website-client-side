@@ -90,7 +90,7 @@ const Login = ({ setInfo, setShowToast }) => {
 
                                     <div className="text-center lg:text-left">
                                         <h1 className="text-5xl font-bold">Log in Now!</h1>
-                                        <p className="link link-hover pt-4 pb-2 text-primary"><Link to='/signup'>Don't have an account? Create one here.</Link></p>
+                                        <p className="link link-hover pt-4 pb-2 text-primary"><Link to='/signup' state={{ from: location }}>Don't have an account? Create one here.</Link></p>
                                         <p className={`font-medium ${gError ? '' : 'invisible'} py-2 text-sm text-red-500`}>{errorify(gError?.code)}</p>
 
                                         <div>
