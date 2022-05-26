@@ -22,9 +22,7 @@ function App() {
 		<div className="App">
 			{
 				uLoading ?
-					<div className='flex h-screen items-center justify-center w-screen'>
-						<p className='flex items-center'><LoadingSpinner hw='h-8 w-8'></LoadingSpinner><span className='font-bold ml-2 text-xl text-primary'>Loading...</span></p>
-					</div>
+					<LoadingSpinner height='screen'></LoadingSpinner>
 					: <div>
 						<Header></Header>
 

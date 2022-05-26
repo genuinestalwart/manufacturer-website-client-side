@@ -55,9 +55,7 @@ const Login = ({ setInfo, setShowToast }) => {
         <section>
             {
                 uLoading || epLoading || gLoading ?
-                    <div className='flex h-[calc(100vh_-_5rem)] items-center justify-center w-full'>
-                        <p className='flex items-center'><LoadingSpinner hw='h-8 w-8'></LoadingSpinner><span className='font-bold ml-2 text-xl text-primary'>Loading...</span></p>
-                    </div>
+                    <LoadingSpinner height='[calc(100vh_-_5rem)]'></LoadingSpinner>
                     : user || epUser || gUser ?
                         <Navigate to={location?.state?.from?.pathname || '/'} state={{ from: location }} replace />
                         : <div>
@@ -67,22 +65,22 @@ const Login = ({ setInfo, setShowToast }) => {
                                         <div className="card-body">
                                             <div className="form-control">
                                                 <label className="font-bold label">
-                                                    <span className="label-text text-lg">Email address <span className='text-sm text-red-400'>*</span></span>
+                                                    <span className="label-text text-lg">Email address <span className='text-sm text-accent-focus'>*</span></span>
                                                 </label>
                                                 <input onBlur={handleEmail} type="email" placeholder="Enter your email" className="input input-bordered focus:outline-primary" autoComplete='username' />
-                                                <p className={validEmail ? 'hidden' : 'mt-2 text-xs text-red-500'}>Please enter a valid email address</p>
+                                                <p className={validEmail ? 'hidden' : 'mt-2 text-xs text-accent-focus'}>Please enter a valid email address</p>
                                             </div>
 
                                             <div className="form-control">
                                                 <label className="font-bold label">
-                                                    <span className="label-text text-lg">Password <span className='text-sm text-red-400'>*</span></span>
+                                                    <span className="label-text text-lg">Password <span className='text-sm text-accent-focus'>*</span></span>
                                                 </label>
                                                 <input onBlur={handlePass} type="password" placeholder="Enter your password" className="input input-bordered focus:outline-primary" autoComplete='current-password' />
-                                                <p className={validPass ? 'hidden' : 'mt-2 text-xs text-red-500'}>Password must contain at least a digit, an uppercase letter, a lowercase letter, a special character and must be within 8 to 23 characters.</p>
+                                                <p className={validPass ? 'hidden' : 'mt-2 text-xs text-accent-focus'}>Password must contain at least a digit, an uppercase letter, a lowercase letter, a special character and must be within 8 to 23 characters.</p>
                                             </div>
 
                                             <div className="form-control">
-                                                <p className={`font-medium ${epError ? '' : 'invisible'} my-2 text-sm text-red-500`}>{errorify(epError?.code)}</p>
+                                                <p className={`font-medium ${epError ? '' : 'invisible'} my-2 text-sm text-accent-focus`}>{errorify(epError?.code)}</p>
                                                 <button onClick={handleLogin} className="disabled:bg-primary disabled:bg-opacity-60 btn btn-primary text-accent disabled:text-accent" type='submit' disabled={email && password && validEmail && validPass ? false : true}>Log in</button>
                                             </div>
                                         </div>
@@ -91,7 +89,7 @@ const Login = ({ setInfo, setShowToast }) => {
                                     <div className="text-center lg:text-left">
                                         <h1 className="text-5xl font-bold">Log in Now!</h1>
                                         <p className="link link-hover pt-4 pb-2 text-primary"><Link to='/signup' state={{ from: location }}>Don't have an account? Create one here.</Link></p>
-                                        <p className={`font-medium ${gError ? '' : 'invisible'} py-2 text-sm text-red-500`}>{errorify(gError?.code)}</p>
+                                        <p className={`font-medium ${gError ? '' : 'invisible'} py-2 text-sm text-accent-focus`}>{errorify(gError?.code)}</p>
 
                                         <div>
                                             <button onClick={handleGoogleLogin} className="btn btn-primary text-accent w-full"><img className='h-3/5 mr-2' src={google} alt="google symbol" /> Log in with Google</button>
