@@ -26,17 +26,17 @@ const Login = ({ setInfo, setShowToast }) => {
         if (email && password && validEmail && validPass) {
             signInWithEmailAndPassword(email, password)
                 .then(() => {
-                    // fetch('https://rahman-warehouse-backend.herokuapp.com/auth', {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'content-type': 'application/json'
-                    //     },
-                    //     body: JSON.stringify({ email })
-                    // })
-                    //     .then(res => res.json())
-                    //     .then(({ accessToken }) => {
-                    //         localStorage.setItem('accessToken', accessToken);
-                    //     });
+                    fetch('http://localhost:5000/auth', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ email })
+                    })
+                        .then(res => res.json())
+                        .then(({ accessToken }) => {
+                            localStorage.setItem('accessToken', accessToken);
+                        });
                     setEmail('');
                     setPassword('');
                 });
