@@ -5,7 +5,7 @@ import { Link, Navigate, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useFirebase from '../../hooks/useFirebase';
 import LoadingSpinner from '../Shared/Others/LoadingSpinner';
-const Login = ({ setInfo, setShowToast }) => {
+const Login = () => {
     const {
         email, setEmail,
         password, setPassword,

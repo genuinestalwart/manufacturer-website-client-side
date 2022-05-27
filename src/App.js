@@ -1,6 +1,7 @@
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Blogs from './components/Main/Blogs';
 import Dashboard from './components/Main/Dashboard';
 import Home from './components/Main/Home';
@@ -14,6 +15,7 @@ import Header from './components/Shared/Header/Header';
 import LoadingSpinner from './components/Shared/Others/LoadingSpinner';
 import RequireAuth from './components/Shared/Require/RequireAuth';
 import auth from './firebase.init';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 	const [, uLoading] = useAuthState(auth);
@@ -42,6 +44,8 @@ function App() {
 						<Footer></Footer>
 					</div>
 			}
+
+			<ToastContainer />
 		</div>
 	);
 }

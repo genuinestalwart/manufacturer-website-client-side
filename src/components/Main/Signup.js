@@ -6,7 +6,7 @@ import auth from '../../firebase.init';
 import useFirebase from '../../hooks/useFirebase';
 import LoadingSpinner from '../Shared/Others/LoadingSpinner';
 
-const Signup = ({ setInfo, setShowToast }) => {
+const Signup = () => {
     const {
         username, setUsername,
         email, setEmail,

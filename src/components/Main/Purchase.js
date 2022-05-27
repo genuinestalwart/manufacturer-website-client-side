@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../Shared/Others/LoadingSpinner';
 
@@ -9,6 +10,8 @@ const Purchase = () => {
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
     const [amount, setAmount] = useState(0);
+    const [address, setAddress] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const location = useLocation();
     const _id = location?.state?._id;
 
@@ -27,6 +30,37 @@ const Purchase = () => {
     }, [_id]);
 
     const { name, price, image, itemType, description, minimumQuantity, availableQuantity } = product;
+
+    const handlePurchase = () => {
+        const order = {
+            username: displayName, productId: _id, email,
+            deliverTo: address, phoneNumber, amount,
+            totalPrice: amount * Number(price)
+        };
+
+        fetch('http://localhost:5000/purchase', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    res.json()
+                        .then(data => {
+                            toast.success(data.message, {
+                                position: "top-right",
+                                autoClose: 3000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                            });
+                        });
+                }
+            });
+    };
 
     return (
         <section>
@@ -74,21 +108,21 @@ const Purchase = () => {
                                         <div className="form-control my-2">
                                             <div className="input-group">
                                                 <span className="bg-accent font-bold label-text text-primary w-2/5">Your Address</span>
-                                                <input type="text" placeholder='Enter your address' className="input input-bordered focus:outline-primary focus:outline-offset-0 w-full" />
+                                                <input onBlur={(e) => setAddress(e.target.value)} type="text" placeholder='Enter your address' className="input input-bordered focus:outline-primary focus:outline-offset-0 w-full" />
                                             </div>
                                         </div>
 
                                         <div className="form-control my-2">
                                             <div className="input-group">
                                                 <span className="bg-accent font-bold label-text text-primary w-2/5">Phone number</span>
-                                                <input type="tel" placeholder='Enter your number' className="input input-bordered focus:outline-primary focus:outline-offset-0 w-full" />
+                                                <input onBlur={(e) => setPhoneNumber(e.target.value)} type="tel" placeholder='Enter your number' className="input input-bordered focus:outline-primary focus:outline-offset-0 w-full" />
                                             </div>
                                         </div>
 
                                         <div className="form-control my-2">
                                             <div className="input-group">
                                                 <span className="bg-accent font-bold label-text text-primary w-2/5">Amount of Item</span>
-                                                <input onChange={(e) => setAmount(e.target.value)} type="number" placeholder='Enter amount' defaultValue={minimumQuantity} className="input input-bordered focus:outline-primary focus:outline-offset-0 w-full" />
+                                                <input onChange={(e) => setAmount(Number(e.target.value))} type="number" placeholder='Enter amount' defaultValue={minimumQuantity} className="input input-bordered focus:outline-primary focus:outline-offset-0 w-full" />
                                             </div>
                                         </div>
 
@@ -97,7 +131,7 @@ const Purchase = () => {
                                         </div>
 
                                         <div className="form-control">
-                                            <button className="disabled:bg-base-300 disabled:hover:bg-base-300 btn btn-primary disabled:cursor-not-allowed font-bold disabled:pointer-events-auto text-accent disabled:text-accent-focus disabled:hover:text-accent-focus" disabled={isNaN(amount) || amount < Number(minimumQuantity) || amount > Number(availableQuantity) ? true : false}>Purchase</button>
+                                            <button onClick={handlePurchase} className="disabled:bg-base-300 disabled:hover:bg-base-300 btn btn-primary disabled:cursor-not-allowed font-bold disabled:pointer-events-auto text-accent disabled:text-accent-focus disabled:hover:text-accent-focus" disabled={isNaN(amount) || amount < Number(minimumQuantity) || amount > Number(availableQuantity) || !address.trim() || !phoneNumber.trim() ? true : false}>Purchase</button>
                                         </div>
                                     </div>
                                 </div>
