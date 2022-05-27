@@ -22,7 +22,7 @@ const Products = () => {
             <div className='my-12 px-20'>
                 {
                     loading ?
-                        <LoadingSpinner height='80'></LoadingSpinner>
+                        <LoadingSpinner height='h-80'></LoadingSpinner>
                         : <div className='gap-12 grid grid-cols-3'>
                             {
                                 products.map(product => <Product key={product._id} product={product}></Product>)

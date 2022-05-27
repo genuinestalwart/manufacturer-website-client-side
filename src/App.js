@@ -31,7 +31,7 @@ function App() {
 		<div className="App">
 			{
 				uLoading ?
-					<LoadingSpinner height='screen'></LoadingSpinner>
+					<LoadingSpinner height='h-screen'></LoadingSpinner>
 					: <div>
 						<Header></Header>
 

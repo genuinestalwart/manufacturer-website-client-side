@@ -59,7 +59,7 @@ const Signup = () => {
         <section>
             {
                 uLoading || epLoading || gLoading || updating ?
-                    <LoadingSpinner height='[calc(100vh_-_5rem)]'></LoadingSpinner>
+                    <LoadingSpinner height='h-[calc(100vh_-_5rem)]'></LoadingSpinner>
                     : user || epUser || gUser ?
                         <Navigate to={location?.state?.from?.pathname || '/'} state={{ from: location }} replace />
                         : <div>

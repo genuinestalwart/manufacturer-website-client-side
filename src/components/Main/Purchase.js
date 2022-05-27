@@ -66,7 +66,7 @@ const Purchase = () => {
         <section>
             {
                 loading ?
-                    <LoadingSpinner height='[calc(100vh_-_5rem)]'></LoadingSpinner>
+                    <LoadingSpinner height='h-[calc(100vh_-_5rem)]'></LoadingSpinner>
                     : _id ?
                         <div className='flex justify-between mt-4 mb-12 px-20'>
                             <div className='w-2/5'>

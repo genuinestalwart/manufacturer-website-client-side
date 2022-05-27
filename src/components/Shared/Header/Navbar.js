@@ -9,7 +9,7 @@ const Navbar = () => {
     const { logOut } = useFirebase();
 
     const applyClass = ({ isActive }) => {
-        return `font-bold px-3 ${isActive ? 'bg-accent text-primary' : 'hover:bg-secondary bg-transparent hover:text-base-100'}`;
+        return `font-bold px-3 ${isActive ? 'bg-accent text-primary' : 'hover:bg-secondary bg-transparent hover:text-neutral'}`;
     };
 
     return (
@@ -25,14 +25,14 @@ const Navbar = () => {
 
                                 <ul className='bg-base-100 absolute z-10'>
                                     <li className='my-0.5'><NavLink className={applyClass} to='/purchase'>Purchase</NavLink></li>
-                                    <li className='my-0.5'><NavLink className={applyClass} to='/dashboard'>Dashboard</NavLink></li>
+                                    <li className='my-0.5'><NavLink className={applyClass} to='/dashboard/profile'>Dashboard</NavLink></li>
                                     <li className='my-0.5'><NavLink className={applyClass} to='/blogs'>Blogs</NavLink></li>
                                     <li className='my-0.5'><NavLink className={applyClass} to='/my-portfolio'>My Portfolio</NavLink></li>
                                 </ul>
                             </li>
 
 
-                            <li><button onClick={logOut} className='hover:bg-secondary bg-transparent font-bold px-3 py-2 hover:text-base-100'>Log out</button></li>
+                            <li><button onClick={logOut} className='hover:bg-secondary bg-transparent font-bold px-3 py-2 hover:text-neutral'>Log out</button></li>
                         </ul>
                         : <ul className="menu menu-horizontal p-0 space-x-1">
                             <li><NavLink className={applyClass} to='/'>Home</NavLink></li>
