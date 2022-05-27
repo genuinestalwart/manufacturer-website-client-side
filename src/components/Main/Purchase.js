@@ -39,7 +39,7 @@ const Purchase = () => {
         };
 
         fetch('http://localhost:5000/purchase', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -47,17 +47,14 @@ const Purchase = () => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    res.json()
-                        .then(data => {
-                            toast.success(data.message, {
-                                position: "top-right",
-                                autoClose: 3000,
-                                hideProgressBar: false,
-                                closeOnClick: true,
-                                pauseOnHover: true,
-                                draggable: true,
-                            });
-                        });
+                    toast.success("Purchase successful! Please proceed to your Dashboard to see your orders.", {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                    });
                 }
             });
     };

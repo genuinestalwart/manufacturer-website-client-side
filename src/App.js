@@ -41,12 +41,12 @@ function App() {
 								<Route path='/blogs' element={<Blogs></Blogs>}></Route>
 								<Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
 									<Route path='add-product' element={<AddProduct></AddProduct>}></Route>
-									<Route path='add-review' element={<AddReview></AddReview>}></Route>
+									<Route path='add-review' element={<RequireAuth><AddReview></AddReview></RequireAuth>}></Route>
 									<Route path='users' element={<AllUsers></AllUsers>}></Route>
 									<Route path='manage-orders' element={<ManageOrders></ManageOrders>}></Route>
 									<Route path='manage-products' element={<ManageProducts></ManageProducts>}></Route>
-									<Route path='orders' element={<MyOrders></MyOrders>}></Route>
-									<Route path='profile' element={<MyProfile></MyProfile>}></Route>
+									<Route path='orders' element={<RequireAuth><MyOrders></MyOrders></RequireAuth>}></Route>
+									<Route path='profile' element={<RequireAuth><MyProfile></MyProfile></RequireAuth>}></Route>
 								</Route>
 								<Route path='/login' element={<Login></Login>}></Route>
 								<Route path='/my-portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
