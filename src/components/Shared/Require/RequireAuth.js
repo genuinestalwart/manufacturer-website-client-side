@@ -13,13 +13,11 @@ const RequireAuth = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            fetch('http://localhost:5000/verify', {
-                method: 'POST',
+            fetch(`http://localhost:5000/verify?email=${user.email}`, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                     'content-type': 'application/json'
-                },
-                body: JSON.stringify({ email: user.email })
+                }
             })
                 .then(res => {
                     if (res.status !== 200) {
