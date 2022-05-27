@@ -6,3 +6,9 @@
 h1, h2, h3, h4, h5, h6, label, .forgot-password {
     font-family: 'Salsa', cursive;
 }
+.drawer-toggle ~ .drawer-side > .drawer-overlay {
+    @apply bg-base-300;
+}
+.drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
+    @apply bg-opacity-100;
+}
