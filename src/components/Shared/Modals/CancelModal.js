@@ -2,7 +2,7 @@ import { Fragment, useRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationIcon } from '@heroicons/react/outline';
 
-const ErrorModal = ({ cardError, show, setShow }) => {
+const CancelModal = ({ handleCancel, show, setShow }) => {
     const cancelButtonRef = useRef(null);
 
     return (
@@ -40,11 +40,11 @@ const ErrorModal = ({ cardError, show, setShow }) => {
                                             </div>
                                             <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                                 <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
-                                                    Payment Failed!
+                                                    Cancel Order
                                                 </Dialog.Title>
                                                 <div className="mt-2">
                                                     <p className="text-sm text-gray-500">
-                                                        {cardError}
+                                                        Are you sure you want to cancel the order? This action cannot be undone.
                                                     </p>
                                                 </div>
                                             </div>
@@ -54,9 +54,17 @@ const ErrorModal = ({ cardError, show, setShow }) => {
                                         <button
                                             type="button"
                                             className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                                            onClick={() => setShow(false)}
+                                            onClick={handleCancel}
                                         >
-                                            Okay
+                                            Yes
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                                            onClick={() => setShow(false)}
+                                            ref={cancelButtonRef}
+                                        >
+                                            No
                                         </button>
                                     </div>
                                 </Dialog.Panel>
@@ -69,4 +77,4 @@ const ErrorModal = ({ cardError, show, setShow }) => {
     );
 };
 
-export default ErrorModal;
+export default CancelModal;

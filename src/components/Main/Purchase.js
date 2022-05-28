@@ -34,8 +34,8 @@ const Purchase = () => {
     const handlePurchase = () => {
         const order = {
             username: displayName, productId: _id, email,
-            deliverTo: address, phoneNumber, amount,
-            totalPrice: amount * Number(price)
+            deliverTo: address, phoneNumber, paid: false,
+            totalPrice: amount * Number(price), amount
         };
 
         fetch('http://localhost:5000/purchase', {

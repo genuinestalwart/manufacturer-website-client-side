@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-const MyOrder = ({ index, order, setShow }) => {
-    const { productId, amount, totalPrice, deliverTo, phoneNumber } = order;
+const MyOrder = ({ index, order, setCancelOrder, setShow }) => {
+    const { productId, amount, paid, totalPrice, deliverTo, phoneNumber } = order;
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
+    const location = useLocation();
 
     useEffect(() => {
         fetch(`http://localhost:5000/product/${productId}`)
@@ -15,6 +17,11 @@ const MyOrder = ({ index, order, setShow }) => {
     }, [productId]);
 
     const { name, price, itemType } = product;
+
+    const handleCancel = () => {
+        setCancelOrder(order);
+        setShow(true);
+    };
 
     if (loading) {
         return (
@@ -45,10 +52,16 @@ const MyOrder = ({ index, order, setShow }) => {
             <td>${totalPrice}</td>
             <td>{deliverTo}</td>
             <td>{phoneNumber}</td>
-            <td className='space-x-4'>
-                <button className="btn btn-sm btn-primary text-accent">Pay</button>
-                <button onClick={() => setShow(true)} className="hover:bg-error hover:border-error btn btn-sm btn-accent text-primary">Cancel</button>
-            </td>
+            {
+                paid ?
+                    <td className='space-x-4'>
+                        <div className="badge badge-secondary font-bold h-auto py-1 rounded-2xl text-neutral">Paid</div>
+                    </td>
+                    : <td className='space-x-4'>
+                        <Link className="btn btn-sm btn-primary text-accent" to='/payment' state={{ from: location, _id: productId, order }}>Pay</Link>
+                        <button onClick={handleCancel} className="hover:bg-error hover:border-error btn btn-sm btn-accent text-primary">Cancel</button>
+                    </td>
+            }
         </tr>
     );
 };

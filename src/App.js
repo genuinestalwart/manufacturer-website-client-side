@@ -23,6 +23,7 @@ import ManageOrders from './components/Dashboard/ManageOrders';
 import ManageProducts from './components/Dashboard/ManageProducts';
 import MyOrders from './components/Dashboard/MyOrders';
 import MyProfile from './components/Dashboard/MyProfile';
+import Payment from './components/Main/Payment';
 
 function App() {
 	const [, uLoading] = useAuthState(auth);
@@ -50,6 +51,7 @@ function App() {
 								</Route>
 								<Route path='/login' element={<Login></Login>}></Route>
 								<Route path='/my-portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
+								<Route path='/payment' element={<RequireAuth><Payment></Payment></RequireAuth>}></Route>
 								<Route path='/purchase' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
 								<Route path='/signup' element={<Signup></Signup>}></Route>
 								<Route path='*' element={<NotFound></NotFound>}></Route>

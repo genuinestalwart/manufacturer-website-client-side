@@ -10,6 +10,8 @@
 		"@fortawesome/react-fontawesome": "^0.1.18",
 		"@headlessui/react": "^1.6.3",
 		"@heroicons/react": "^1.0.6",
+		"@stripe/react-stripe-js": "^1.8.1",
+		"@stripe/stripe-js": "^1.31.0",
 		"@testing-library/jest-dom": "^5.16.4",
 		"@testing-library/react": "^13.2.0",
 		"@testing-library/user-event": "^13.5.0",
