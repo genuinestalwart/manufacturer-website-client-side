@@ -41,6 +41,7 @@ const Purchase = () => {
         fetch('http://localhost:5000/purchase', {
             method: 'PUT',
             headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify(order)
