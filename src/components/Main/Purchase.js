@@ -17,7 +17,7 @@ const Purchase = () => {
 
     useEffect(() => {
         if (_id?.length === 24) {
-            fetch(`http://localhost:5000/product/${_id}`)
+            fetch(`https://manufacture-online-server.herokuapp.com/product/${_id}`)
                 .then(res => res.json())
                 .then(data => {
                     setProduct(data);
@@ -38,7 +38,7 @@ const Purchase = () => {
             totalPrice: amount * Number(price), delivered: false
         };
 
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://manufacture-online-server.herokuapp.com/purchase', {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,

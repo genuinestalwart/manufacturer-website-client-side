@@ -26,7 +26,7 @@ const Login = () => {
         if (email && password && validEmail && validPass) {
             signInWithEmailAndPassword(email, password)
                 .then(() => {
-                    fetch('http://localhost:5000/auth', {
+                    fetch('https://manufacture-online-server.herokuapp.com/auth', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

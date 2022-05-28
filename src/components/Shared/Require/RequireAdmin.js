@@ -15,7 +15,7 @@ const RequireAdmin = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/verify?email=${user.email}`, {
+            fetch(`https://manufacture-online-server.herokuapp.com/verify?email=${user.email}`, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                     'content-type': 'application/json'
@@ -29,7 +29,7 @@ const RequireAdmin = ({ children }) => {
                     setVLoading(false);
                 });
 
-            fetch(`http://localhost:5000/verify-admin?email=${user.email}&username=${user.displayName}`, {
+            fetch(`https://manufacture-online-server.herokuapp.com/verify-admin?email=${user.email}&username=${user.displayName}`, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                     'content-type': 'application/json'

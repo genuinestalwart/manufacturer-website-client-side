@@ -13,7 +13,7 @@ const RequireAuth = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/verify?email=${user.email}`, {
+            fetch(`https://manufacture-online-server.herokuapp.com/verify?email=${user.email}`, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                     'content-type': 'application/json'

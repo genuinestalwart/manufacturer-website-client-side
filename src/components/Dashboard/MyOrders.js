@@ -13,7 +13,7 @@ const MyOrders = () => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?username=${displayName}&email=${email}`, {
+        fetch(`https://manufacture-online-server.herokuapp.com/orders?username=${displayName}&email=${email}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -28,7 +28,7 @@ const MyOrders = () => {
     const handleCancel = () => {
         setShow(false);
 
-        fetch('http://localhost:5000/cancel-order', {
+        fetch('https://manufacture-online-server.herokuapp.com/cancel-order', {
             method: 'DELETE',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,

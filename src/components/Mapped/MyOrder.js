@@ -8,7 +8,7 @@ const MyOrder = ({ index, order, setCancelOrder, setShow }) => {
     const location = useLocation();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${productId}`)
+        fetch(`https://manufacture-online-server.herokuapp.com/product/${productId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);

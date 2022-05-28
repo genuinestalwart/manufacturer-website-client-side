@@ -12,7 +12,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/verify-admin?email=${user.email}&username=${user.displayName}`, {
+            fetch(`https://manufacture-online-server.herokuapp.com/verify-admin?email=${user.email}&username=${user.displayName}`, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                     'content-type': 'application/json'

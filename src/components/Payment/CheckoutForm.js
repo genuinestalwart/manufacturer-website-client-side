@@ -15,7 +15,7 @@ const CheckoutForm = ({ order }) => {
     const { totalPrice, username, email, paid, transactionId: tID } = fetchedOrder;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://manufacture-online-server.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
@@ -32,7 +32,7 @@ const CheckoutForm = ({ order }) => {
     }, [totalPrice]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/order?_id=${_id}`, {
+        fetch(`https://manufacture-online-server.herokuapp.com/order?_id=${_id}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const CheckoutForm = ({ order }) => {
     }, [_id, transactionId]);
 
     const handlePayment = (id) => {
-        fetch('http://localhost:5000/payment', {
+        fetch('https://manufacture-online-server.herokuapp.com/payment', {
             method: 'POST',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`,

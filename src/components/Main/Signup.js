@@ -29,7 +29,7 @@ const Signup = () => {
         if (email && password && validEmail && validPass) {
             createUserWithEmailAndPassword(email, password)
                 .then(() => {
-                    fetch('http://localhost:5000/auth', {
+                    fetch('https://manufacture-online-server.herokuapp.com/auth', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -45,7 +45,7 @@ const Signup = () => {
                     setPassword('');
                 })
                 .then(() => {
-                    fetch('http://localhost:5000/signup', {
+                    fetch('https://manufacture-online-server.herokuapp.com/signup', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
