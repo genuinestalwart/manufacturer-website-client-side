@@ -3,7 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import CheckoutForm from '../Payment/CheckoutForm';
-import LoadingSpinner from '../Shared/Others/LoadingSpinner';
+import BigSpinner from '../Shared/Spinners/BigSpinner';
 
 const stripePromise = loadStripe('pk_test_51L4Iy4JpuNWuxCtplL2nHPQMZ9JOBpLRnYFGnOcMcHKt4fwaBOEpu7otwvPJ00rN4ZTq2vtJVZuee0GLuqwuicOi00F5w34N1z');
 
@@ -34,7 +34,7 @@ const Payment = () => {
         <section>
             {
                 loading ?
-                    <LoadingSpinner height='h-[calc(100vh_-_5rem)]'></LoadingSpinner>
+                    <BigSpinner height='h-[calc(100vh_-_5rem)]'></BigSpinner>
                     : _id ?
                         <div className='flex justify-between mt-4 mb-12 px-20'>
                             <div className='w-1/2'>
@@ -83,7 +83,7 @@ const Payment = () => {
                                 <div className="card bg-base-100 rounded-lg shadow-xl">
                                     <div className="card-body text-sm">
                                         <Elements stripe={stripePromise}>
-                                            <CheckoutForm totalPrice={totalPrice} />
+                                            <CheckoutForm order={order} />
                                         </Elements>
                                     </div>
                                 </div>

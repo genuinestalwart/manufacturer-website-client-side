@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadingSpinner = ({ height }) => {
+const BigSpinner = ({ height }) => {
     return (
         <div className={`flex ${height} items-center justify-center w-full`}>
             <p className='flex items-center'><span>
@@ -13,4 +13,4 @@ const LoadingSpinner = ({ height }) => {
     );
 };
 
-export default LoadingSpinner;
+export default BigSpinner;

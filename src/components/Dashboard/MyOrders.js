@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import MyOrder from '../Mapped/MyOrder';
 import CancelModal from '../Shared/Modals/CancelModal';
-import LoadingSpinner from '../Shared/Others/LoadingSpinner';
+import BigSpinner from '../Shared/Spinners/BigSpinner';
 
 const MyOrders = () => {
     const { displayName, email } = useAuthState(auth)[0];
@@ -43,7 +43,7 @@ const MyOrders = () => {
         <section>
             {
                 loading ?
-                    <LoadingSpinner height='h-[calc(100vh_-_5rem)]'></LoadingSpinner>
+                    <BigSpinner height='h-[calc(100vh_-_5rem)]'></BigSpinner>
                     : orders.length ?
                         <div className='px-8 pb-8'>
                             <div className="overflow-x-auto">

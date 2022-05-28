@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
-import LoadingSpinner from '../Shared/Others/LoadingSpinner';
+import BigSpinner from '../Shared/Spinners/BigSpinner';
 
 const Purchase = () => {
     const { displayName, email } = useAuthState(auth)[0];
@@ -33,9 +33,9 @@ const Purchase = () => {
 
     const handlePurchase = () => {
         const order = {
-            username: displayName, productId: _id, email,
-            deliverTo: address, phoneNumber, paid: false,
-            totalPrice: amount * Number(price), amount
+            username: displayName, productId: _id, amount, paid: false,
+            deliverTo: address, phoneNumber, transactionId: '', email,
+            totalPrice: amount * Number(price), delivered: false
         };
 
         fetch('http://localhost:5000/purchase', {
@@ -64,7 +64,7 @@ const Purchase = () => {
         <section>
             {
                 loading ?
-                    <LoadingSpinner height='h-[calc(100vh_-_5rem)]'></LoadingSpinner>
+                    <BigSpinner height='h-[calc(100vh_-_5rem)]'></BigSpinner>
                     : _id ?
                         <div className='flex justify-between mt-4 mb-12 px-20'>
                             <div className='w-2/5'>

@@ -12,7 +12,7 @@ import Purchase from './components/Main/Purchase';
 import Signup from './components/Main/Signup';
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
-import LoadingSpinner from './components/Shared/Others/LoadingSpinner';
+import BigSpinner from './components/Shared/Spinners/BigSpinner';
 import RequireAuth from './components/Shared/Require/RequireAuth';
 import auth from './firebase.init';
 import { ToastContainer } from 'react-toastify';
@@ -32,7 +32,7 @@ function App() {
 		<div className="App">
 			{
 				uLoading ?
-					<LoadingSpinner height='h-screen'></LoadingSpinner>
+					<BigSpinner height='h-screen'></BigSpinner>
 					: <div>
 						<Header></Header>
 

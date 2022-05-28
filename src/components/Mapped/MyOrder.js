@@ -54,10 +54,10 @@ const MyOrder = ({ index, order, setCancelOrder, setShow }) => {
             <td>{phoneNumber}</td>
             {
                 paid ?
-                    <td className='space-x-4'>
+                    <td className='space-x-4 text-center'>
                         <div className="badge badge-secondary font-bold h-auto py-1 rounded-2xl text-neutral">Paid</div>
                     </td>
-                    : <td className='space-x-4'>
+                    : <td className='space-x-4 text-center'>
                         <Link className="btn btn-sm btn-primary text-accent" to='/payment' state={{ from: location, _id: productId, order }}>Pay</Link>
                         <button onClick={handleCancel} className="hover:bg-error hover:border-error btn btn-sm btn-accent text-primary">Cancel</button>
                     </td>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../Mapped/Product';
-import LoadingSpinner from '../Shared/Others/LoadingSpinner';
+import BigSpinner from '../Shared/Spinners/BigSpinner';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -22,7 +22,7 @@ const Products = () => {
             <div className='my-12 px-20'>
                 {
                     loading ?
-                        <LoadingSpinner height='h-80'></LoadingSpinner>
+                        <BigSpinner height='h-80'></BigSpinner>
                         : <div className='gap-12 grid grid-cols-3'>
                             {
                                 products.map(product => <Product key={product._id} product={product}></Product>)

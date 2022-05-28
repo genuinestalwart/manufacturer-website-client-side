@@ -4,7 +4,7 @@ import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, u
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useFirebase from '../../hooks/useFirebase';
-import LoadingSpinner from '../Shared/Others/LoadingSpinner';
+import BigSpinner from '../Shared/Spinners/BigSpinner';
 
 const Signup = () => {
     const {
@@ -59,7 +59,7 @@ const Signup = () => {
         <section>
             {
                 uLoading || epLoading || gLoading || updating ?
-                    <LoadingSpinner height='h-[calc(100vh_-_5rem)]'></LoadingSpinner>
+                    <BigSpinner height='h-[calc(100vh_-_5rem)]'></BigSpinner>
                     : user || epUser || gUser ?
                         <Navigate to={location?.state?.from?.pathname || '/'} state={{ from: location }} replace />
                         : <div>
