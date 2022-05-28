@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const MyOrder = ({ index, order, setCancelOrder, setShow }) => {
-    const { productId, amount, paid, totalPrice, deliverTo, phoneNumber } = order;
+    const { productId, amount, paid, totalPrice, deliverTo, phoneNumber, transactionId } = order;
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
     const location = useLocation();
@@ -55,9 +55,10 @@ const MyOrder = ({ index, order, setCancelOrder, setShow }) => {
             {
                 paid ?
                     <td className='space-x-4 text-center'>
-                        <div className="badge badge-secondary font-bold h-auto py-1 rounded-2xl text-neutral">Paid</div>
+                        <span className="badge badge-secondary font-bold h-auto py-1 rounded-2xl text-neutral">Paid</span>
+                        <span>Transaction ID: <span className='font-semibold text-primary'>{transactionId}</span></span>
                     </td>
-                    : <td className='space-x-4 text-center'>
+                    : <td className='space-x-8 text-center'>
                         <Link className="btn btn-sm btn-primary text-accent" to='/payment' state={{ from: location, _id: productId, order }}>Pay</Link>
                         <button onClick={handleCancel} className="hover:bg-error hover:border-error btn btn-sm btn-accent text-primary">Cancel</button>
                     </td>

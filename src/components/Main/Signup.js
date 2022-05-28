@@ -43,6 +43,19 @@ const Signup = () => {
                     updateProfile({ displayName: username });
                     setEmail('');
                     setPassword('');
+                })
+                .then(() => {
+                    fetch('http://localhost:5000/signup', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email, username, admin: false,
+                            education: '', linkedIn: '',
+                            phoneNumber: '', location: ''
+                        })
+                    })
                 });
         }
     };
@@ -52,7 +65,8 @@ const Signup = () => {
             .then(() => {
                 setEmail('');
                 setPassword('');
-            });
+            })
+            .then(() => { });
     };
 
     return (

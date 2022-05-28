@@ -24,6 +24,8 @@ import ManageProducts from './components/Dashboard/ManageProducts';
 import MyOrders from './components/Dashboard/MyOrders';
 import MyProfile from './components/Dashboard/MyProfile';
 import Payment from './components/Main/Payment';
+import RequireAdmin from './components/Shared/Require/RequireAdmin';
+import RequireUser from './components/Shared/Require/RequireUser';
 
 function App() {
 	const [, uLoading] = useAuthState(auth);
@@ -41,18 +43,18 @@ function App() {
 								<Route path='/' element={<Home></Home>}></Route>
 								<Route path='/blogs' element={<Blogs></Blogs>}></Route>
 								<Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
-									<Route path='add-product' element={<AddProduct></AddProduct>}></Route>
-									<Route path='add-review' element={<RequireAuth><AddReview></AddReview></RequireAuth>}></Route>
-									<Route path='users' element={<AllUsers></AllUsers>}></Route>
-									<Route path='manage-orders' element={<ManageOrders></ManageOrders>}></Route>
-									<Route path='manage-products' element={<ManageProducts></ManageProducts>}></Route>
-									<Route path='orders' element={<RequireAuth><MyOrders></MyOrders></RequireAuth>}></Route>
+									<Route path='add-product' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
+									<Route path='add-review' element={<RequireUser><AddReview></AddReview></RequireUser>}></Route>
+									<Route path='users' element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
+									<Route path='manage-orders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
+									<Route path='manage-products' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
+									<Route path='orders' element={<RequireUser><MyOrders></MyOrders></RequireUser>}></Route>
 									<Route path='profile' element={<RequireAuth><MyProfile></MyProfile></RequireAuth>}></Route>
 								</Route>
 								<Route path='/login' element={<Login></Login>}></Route>
 								<Route path='/my-portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
-								<Route path='/payment' element={<RequireAuth><Payment></Payment></RequireAuth>}></Route>
-								<Route path='/purchase' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
+								<Route path='/payment' element={<RequireUser><Payment></Payment></RequireUser>}></Route>
+								<Route path='/purchase' element={<RequireUser><Purchase></Purchase></RequireUser>}></Route>
 								<Route path='/signup' element={<Signup></Signup>}></Route>
 								<Route path='*' element={<NotFound></NotFound>}></Route>
 							</Routes>

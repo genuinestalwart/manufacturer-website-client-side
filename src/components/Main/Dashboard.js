@@ -1,13 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, Navigate, Outlet, useLocation } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Dashboard = () => {
     const [close, setClose] = useState(true);
     const location = useLocation();
+    const [user, loading] = useAuthState(auth);
+    const [admin, setAdmin] = useState(true);
+    const [aLoading, setALoading] = useState(true);
+
+    useEffect(() => {
+        if (user) {
+            fetch(`http://localhost:5000/verify-admin?email=${user.email}&username=${user.displayName}`, {
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                    'content-type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setAdmin(data.admin);
+                    setALoading(false);
+                });
+        }
+    }, [user]);
 
     const applyClass = ({ isActive }) => {
         return `font-bold mt-2 ${isActive ? 'bg-accent text-primary' : 'hover:bg-secondary bg-transparent hover:text-neutral'}`;
     };
+
+    if (loading || aLoading) {
+        return <div></div>;
+    }
 
     if (location.pathname === '/dashboard') {
         return <Navigate to='/dashboard/profile' state={{ from: location }} replace></Navigate>;
@@ -30,13 +55,13 @@ const Dashboard = () => {
                     <label onClick={() => setClose(true)} htmlFor="dashboard-drawer" className="drawer-overlay"></label>
 
                     <ul className="menu p-4 overflow-y-auto w-1/4 bg-base-100 text-base-content">
-                        <li><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/orders'>My Orders</NavLink></li>
-                        <li><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/add-review'>Add a Review</NavLink></li>
+                        <li className={admin ? 'hidden' : ''}><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/orders'>My Orders</NavLink></li>
+                        <li className={admin ? 'hidden' : ''}><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/add-review'>Add a Review</NavLink></li>
                         <li><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/profile'>My Profile</NavLink></li>
-                        <li><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/manage-orders'>Manage All Orders</NavLink></li>
-                        <li><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/add-product'>Add a Product</NavLink></li>
-                        <li><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/users'>All Users</NavLink></li>
-                        <li><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/manage-products'>Manage All Products</NavLink></li>
+                        <li className={admin ? '' : 'hidden'}><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/manage-orders'>Manage All Orders</NavLink></li>
+                        <li className={admin ? '' : 'hidden'}><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/add-product'>Add a Product</NavLink></li>
+                        <li className={admin ? '' : 'hidden'}><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/users'>All Users</NavLink></li>
+                        <li className={admin ? '' : 'hidden'}><NavLink className={applyClass} onClick={() => setClose(true)} to='/dashboard/manage-products'>Manage All Products</NavLink></li>
                     </ul>
                 </div>
             </div>
