@@ -1,7 +1,5 @@
 module.exports = {
-	content: [
-		"./src/**/*.{js,jsx,ts,tsx}",
-	],
+	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
 		extend: {},
 	},
@@ -13,10 +11,10 @@ module.exports = {
 					primary: "#4A5FC1",
 					secondary: "#00ABE1",
 					accent: "#f9aca6",
-					neutral: "#FDF5DF",
+					neutral: "#C4FAFD",
 					"base-100": "#ffffff",
 				},
 			},
 		],
 	},
-}
+};

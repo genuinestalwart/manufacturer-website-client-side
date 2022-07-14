@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Salsa&display=swap');
-
-.App {
-    font-family: 'Nunito', sans-serif;
-}
-h1, h2, h3, h4, h5, h6, label, .forgot-password {
-    font-family: 'Salsa', cursive;
-}
 .drawer-toggle ~ .drawer-side > .drawer-overlay {
-    @apply bg-gray-500;
+	@apply bg-gray-500;
 }
 .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
-    @apply bg-opacity-75;
+	@apply bg-opacity-75;
 }
-.table :where(thead, tfoot) :where(th, td), .table :where(tbody th, tbody td) {
-    @apply bg-transparent;
+.table :where(thead, tfoot) :where(th, td),
+.table :where(tbody th, tbody td) {
+	@apply bg-transparent;
+}
+.hide-scrollbar {
+	scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+h5.card-title {
+	@apply font-medium;
 }

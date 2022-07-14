@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Product from "../Mapped/Product";
+import Review from "../Mapped/Review";
 import BigSpinner from "../Shared/Spinners/BigSpinner";
 
-const Products = () => {
-	const [products, setProducts] = useState([]);
+const Reviews = () => {
+	const [reviews, setReviews] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		fetch("https://manufacture-online-server.herokuapp.com/products")
+		fetch("http://localhost:5000/reviews")
 			.then((res) => res.json())
 			.then((data) => {
-				setProducts(data);
+				setReviews(data);
 				setLoading(false);
 			});
 	}, []);
@@ -18,7 +18,7 @@ const Products = () => {
 	return (
 		<section>
 			<h2 className='font-bold text-center text-4xl text-primary'>
-				Products
+				Reviews
 			</h2>
 
 			<div className='my-12 px-20'>
@@ -26,10 +26,8 @@ const Products = () => {
 					<BigSpinner height='h-80'></BigSpinner>
 				) : (
 					<div className='gap-12 grid grid-cols-3'>
-						{products.map((product) => (
-							<Product
-								key={product._id}
-								product={product}></Product>
+						{reviews.map((review) => (
+							<Review key={review._id} review={review}></Review>
 						))}
 					</div>
 				)}
@@ -38,4 +36,4 @@ const Products = () => {
 	);
 };
 
-export default Products;
+export default Reviews;
